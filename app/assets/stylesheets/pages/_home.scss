@@ -1,1 +1,49 @@
-// Specific CSS for your home-page
+.custom-navbar {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+}
+
+.landing-container {
+  height: '100vh';
+}
+
+.hero-text-box {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  font-family: 'Raleway';
+}
+.landing-title {
+  font-size: 4rem;
+  text-transform: uppercase;
+  letter-spacing: -.5px;
+  font-weight: 800;
+}
+
+.landing-subtitle {
+  font-size: 1.3rem;
+}
+
+// from other project
+.gradient-test {
+  background: linear-gradient(
+    45deg,
+    rgb(247, 149, 51),
+    rgb(243, 112, 85),
+    rgb(239, 78, 123),
+    rgb(161, 102, 171),
+    rgb(80, 115, 184),
+    rgb(16, 152, 173),
+    rgb(7, 179, 155),
+    rgb(111, 186, 130)
+    /* rgb(247, 149, 51) */
+  );
+  background-size: 400% 400%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 14s ease infinite;
+  line-height: 60px;
+}
