@@ -1,1 +1,13 @@
-<h1> new org / onboarding </h1>
+
+<div class='onboarding-setup-form'>
+  <p>Add Organisation</p>
+
+  <div class='card'>
+    <div class="card-body">
+      <%= simple_form_for @organisation, local: true do |f| %>
+        <%= f.input :name, input_html: { class: 'onboarding-input' } %>
+        <%= f.button :submit, "Continue", class: "btn-primary btn-smaller" %>
+      <% end %>
+    </div>
+  </div>
+</div>

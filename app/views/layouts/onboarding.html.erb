@@ -8,11 +8,26 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   </head>
 
   <body>
     <%= render "shared/flashes" %>
 
-    <%= yield %>
+    <div class='onboarding-container'>
+      <%# <div class='onboarding-title'>onboarding</div> %>
+      <div class='onboarding-logo'>
+        <%= image_tag "duck-test.png", alt: "logo", style: 'height:40px;width:40px;' %>
+      </div>
+
+      <%= yield %>
+
+      <div class='onboarding-graphic'>
+        <%= image_tag "floating-duck-onboarding.png", alt: "logo" %>
+      </div>
+    </div>
   </body>
 </html>

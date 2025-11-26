@@ -11,6 +11,56 @@
 @import "components/index";
 @import "pages/index";
 
+
+/* Some Bootstrap overrides area */
+
+.btn-primary {
+  background: #032250;
+  border-color: #032250;
+  &:hover {
+    background: #032250;
+    border-color: #032250;
+  }
+}
+
+.btn-smaller {
+  font-size: .9rem;
+}
+
+.card {
+  background-color: #fff;
+  border: none;
+  border-radius: 6px;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.12),
+    0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  padding: 10px;
+}
+
+.card:hover {
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.15),
+    0 4px 8px rgba(0, 0, 0, 0.10);
+  transform: translateY(-2px);
+}
+
+.card-body {
+  padding: 16px;
+}
+
+.card-title {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  margin-bottom: 6px;
+  letter-spacing: 0.01em;
+}
+
+.card-text {
+  color: rgba(0, 0, 0, 0.87);
+  line-height: 1.45;
+}
+
 /* Auth pages (Sign-Up & Sign-In) */
 .auth-container {
   display: flex;
@@ -72,4 +122,55 @@
 
 .auth-link:hover {
   text-decoration: underline;
+}
+
+
+.onboarding-container {
+  position: relative;
+  padding: 20px;
+  background: white;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  font-family: 'Raleway';
+}
+
+.onboarding-title {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+}
+
+.onboarding-graphic {
+  filter: brightness(1.05);
+  opacity: .7;
+}
+
+.onboarding-graphic img {
+  max-height: 400px;
+}
+
+.onboarding-setup-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.onboarding-setup-form p {
+  font-size: 3rem;
+  letter-spacing: -.5px;
+  margin-bottom: 40px;
+}
+
+.onboarding-logo {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+}
+
+.onboarding-input {
+  height: 50px;
+  min-width: 380px;
 }
