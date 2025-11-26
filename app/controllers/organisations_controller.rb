@@ -9,6 +9,7 @@ class OrganisationsController < ApplicationController
 
   # using for dashboard
   def show
+    @recent_chats = []
   end
 
   def create

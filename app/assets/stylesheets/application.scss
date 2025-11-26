@@ -174,3 +174,37 @@
   height: 50px;
   min-width: 380px;
 }
+
+.navbar-spacing-solver {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+// Going for non scrollable dashboard
+.dashboard-wrapper {
+  height: 100vh;
+  overflow: hidden;
+  width: 100%;
+}
+.dashboard-top-level {
+  height: 100%;
+  overflow: hidden;
+}
+
+.dashboard-left-panel {
+  height: 100vh;
+  width: 320px;
+  overflow-y: auto;
+}
+
+.ai-button {
+  width: 200px;
+  text-align: center;
+}
+
+.dash-caret-toggle {
+  position: absolute;
+  right: 0;
+  top: 0;
+}

@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-sm navbar-light navbar-lewagon border-bottom shadow-sm">
+  <div class="container-fluid">
+    <%= link_to "/dashboard", class: "navbar-brand" do %>
+      <%= image_tag "duck-test.png", alt: "logo", style: 'height:28px;width:28px;' %>
+    <% end %>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+        <% if user_signed_in? %>
+          <div class='navbar-spacing-solver'>
+            <li class="nav-item">
+              <%= link_to "#", class: "nav-link" do %>
+                <i class="fa-users fa-solid"></i> Manage Employees
+              <% end %>
+            </li>
+            <li class="nav-item active">
+              <%= link_to "#", class: "btn btn-primary btn-smaller" do %>
+                <i class="fa-solid fa-plus"></i>
+                Quick Add Expense
+              <% end %>
+            </li>
+
+            <li>
+              <a href="#" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="text-dark" style="font-size: 1.5rem;">
+                <i class="fa-solid fa-bars"></i>
+              </a>
+              <div class="dropdown-menu dropdown-menu-end bg-white" aria-labelledby="navbarDropdown">
+                <%= link_to dashboard_path, class: "dropdown-item" do %>
+                  <i class="fa-solid fa-star-of-life me-2"></i> Dashboard
+                <% end %>
+                <%= link_to "#", class: "dropdown-item" do %>
+                  <i class="fa-user fa-solid"></i> Manage Employees
+                <% end %>
+                <%= link_to "#", class: "dropdown-item" do %>
+                  <i class="fa-add fa-solid"></i> Quick Add Expense
+                <% end %>
+                <%= link_to "#", class: "dropdown-item" do %>
+                  <i class="fa-solid fa-credit-card me-2"></i> Billing
+                <% end %>
+                <%= link_to "#", class: "dropdown-item" do %>
+                  <i class="fa-solid fa-arrow-up-right-dots me-2"></i> Upgrade to a higher plan
+                <% end %>
+                <%= link_to destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" do %>
+                  <i class="fa-solid fa-right-from-bracket me-2"></i> Log out
+                <% end %>
+              </div>
+            </li>
+          </div>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>

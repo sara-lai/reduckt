@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="dashboard-top-level">
   <head>
     <title>Reduckt</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -8,13 +8,26 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   </head>
 
-  <body>
-    <h1> this is dashboard layout</h1>
-    <%= render "shared/navbar" %>
+  <body class="dashboard-top-level">
+    <%= render "shared/dash_navbar" %>
     <%= render "shared/flashes" %>
 
-    <%= yield %>
+    <div class='dashboard-wrapper'>
+
+      <div class='dashboard-left-panel bg-white shadow-sm border-end'>
+        <%= render "shared/side_panel", recent_chats: @recent_chats %>
+      </div>
+
+      <div class='dashboard-inner'>
+        <%= yield %>
+      </div>
+
+    </div>
   </body>
 </html>
