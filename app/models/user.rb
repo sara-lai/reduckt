@@ -6,6 +6,6 @@ class User < ApplicationRecord
 
   validates :role, inclusion: [ "owner", "employee" ]
 
-  belongs_to :organisation
+  belongs_to :organisation, optional: :true
 
 end

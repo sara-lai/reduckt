@@ -1,5 +1,7 @@
 class OrganisationsController < ApplicationController
 
+  layout :choose_layout
+
   # can be onboarding
   def new
   end
@@ -16,6 +18,16 @@ class OrganisationsController < ApplicationController
   end
 
   def remove_employee
+  end
+
+  private
+
+  def choose_layout
+    if action_name == "new"
+      "onboarding"
+    elsif action_name == "show"
+      "dashboard"
+    end
   end
 
 end
