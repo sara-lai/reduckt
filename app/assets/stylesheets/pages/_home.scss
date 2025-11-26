@@ -1,10 +1,25 @@
+// navbar like my jewelry AI project
 .custom-navbar {
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(12px);
+  position: fixed;
+  top: 16px;
+  width: 100%;
+  max-width: 1320px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 26px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  z-index: 100;
+  left: 50%;
+  transform: translateX(-50%);
+  padding-left: 26px;
+  padding-right: 26px;
 }
 
 .landing-container {
   height: '100vh';
+  padding-top: 80px; // bc navbar
 }
 
 .hero-text-box {
@@ -46,4 +61,76 @@
   -webkit-text-fill-color: transparent;
   animation: gradient-shift 14s ease infinite;
   line-height: 60px;
+}
+
+
+.mobile-app-section {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  align-items: center;
+}
+
+.mobile-app-info-box {
+  max-width: 360px;
+}
+
+.mobile-app-title {
+  font-size: 1.3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  font-weight: 700;
+}
+
+.mobile-app-title i {
+  font-size: 3rem;
+}
+
+.mobile-app-info-box p {
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+.mobile-app-vid {
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15), 0 2px 6px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2), 0 4px 10px rgba(0,0,0,0.12);
+  }
+
+  video {
+    border-radius: 8px;
+    max-height: 400px;
+    max-width: 400px;
+    display: block;
+  }
+}
+
+.landing-body-misc {
+  font-family: 'Raleway';
+}
+
+.app-screenshots {
+}
+
+.app-screenshots img {
+  max-width: 650px;
+}
+
+.hero-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.landing-spacer {
+  height: 100px;
 }
