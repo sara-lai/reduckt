@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_11_27_014610) do
+ActiveRecord::Schema[7.1].define(version: 2025_11_27_023523) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,14 @@ ActiveRecord::Schema[7.1].define(version: 2025_11_27_014610) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "chats", force: :cascade do |t|
+    t.string "title"
+    t.bigint "organisation_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organisation_id"], name: "index_chats_on_organisation_id"
+  end
+
   create_table "expenses", force: :cascade do |t|
     t.decimal "amount"
     t.text "reason"
@@ -54,6 +62,15 @@ ActiveRecord::Schema[7.1].define(version: 2025_11_27_014610) do
     t.datetime "updated_at", null: false
     t.index ["organisation_id"], name: "index_expenses_on_organisation_id"
     t.index ["user_id"], name: "index_expenses_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "role"
+    t.text "content"
+    t.bigint "chat_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chat_id"], name: "index_messages_on_chat_id"
   end
 
   create_table "organisations", force: :cascade do |t|
@@ -81,8 +98,10 @@ ActiveRecord::Schema[7.1].define(version: 2025_11_27_014610) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "chats", "organisations"
   add_foreign_key "expenses", "organisations"
   add_foreign_key "expenses", "users"
+  add_foreign_key "messages", "chats"
   add_foreign_key "organisations", "users", column: "owner_id"
   add_foreign_key "users", "organisations"
 end

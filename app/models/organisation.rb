@@ -6,6 +6,8 @@ class Organisation < ApplicationRecord
 
   has_many :expenses
 
+  has_many :chats
+
   validates :owner, presence: true
 
 end

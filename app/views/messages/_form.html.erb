@@ -1,0 +1,7 @@
+<div>
+  <%= simple_form_for [@organisation, chat, message] do |f| %>
+      <%= f.input :content, label: "Inquire with ReDuckt AI", required: true, placeholder: "What's top of mind? Ask me about your expenses or deductions." %>
+      <%= f.input :file, as: :file, label: "Optional: upload a file" %>
+      <%= f.button :submit, "Send", class: 'btn btn-primary' %>
+  <% end %>
+</div>

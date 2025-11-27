@@ -74,6 +74,11 @@ group :test do
   gem "selenium-webdriver"
 end
 
+gem "ruby_llm"
 
 gem "cloudinary"
 gem "image_processing", "~> 1.2"
+
+gem "kramdown"
+gem "rouge"
+gem "kramdown-parser-gfm"
