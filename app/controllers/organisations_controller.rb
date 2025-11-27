@@ -1,5 +1,5 @@
 class OrganisationsController < ApplicationController
-
+  before_action :authenticate_user!
   layout :choose_layout
 
   # using as onboarding
@@ -7,8 +7,13 @@ class OrganisationsController < ApplicationController
     @organisation = Organisation.new(owner: current_user)
   end
 
-  # using for dashboard
   def show
+    # bug with my dashboard_path (id is nil)
+    if params[:id].blank?
+      @organisation = current_user.organisation
+    else
+      @organisation = Organisation.find(params[:id])
+    end
     @recent_chats = []
   end
 

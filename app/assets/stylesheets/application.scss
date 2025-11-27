@@ -31,6 +31,12 @@
   border-radius: 10px;
 }
 
+.form-title {
+  font-size: 3rem;
+  letter-spacing: -.5px;
+  margin-bottom: 40px;
+}
+
 
 .card {
   background-color: #fff;
@@ -163,12 +169,6 @@
   justify-content: center;
 }
 
-.onboarding-setup-form p {
-  font-size: 3rem;
-  letter-spacing: -.5px;
-  margin-bottom: 40px;
-}
-
 .onboarding-logo {
   position: absolute;
   left: 20px;
@@ -188,20 +188,29 @@
 
 // Going for non scrollable dashboard
 .dashboard-wrapper {
+  display: flex;
   height: 100vh;
   overflow: hidden;
   width: 100%;
 }
-.dashboard-top-level {
-  height: 100%;
-  overflow: hidden;
-}
 
 .dashboard-left-panel {
-  height: 100vh;
   width: 320px;
   overflow-y: auto;
 }
+
+.dashboard-inner {
+  flex: 1;
+  overflow-y: auto;
+  padding: "30px";
+}
+
+.dashboard-top-level {
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Raleway';
+}
+
 
 .ai-button {
   width: 200px;
@@ -212,4 +221,13 @@
   position: absolute;
   right: 0;
   top: 0;
+}
+
+.expense-input {
+  height: 50px;
+  min-width: 380px;
+}
+
+.expense-form-container {
+  padding: 40px;
 }

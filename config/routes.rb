@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'organisations#show', as: :dashboard
   get '/onboarding', to: 'organisations#new', as: :onboarding
 
-  resources :organisations, only: [:new, :show, :create]
-
+  resources :organisations, only: [:new, :show, :create] do
+    resources :expenses, only: [:new, :create, :show, :index]
+  end
 
 end

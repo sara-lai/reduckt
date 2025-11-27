@@ -1,0 +1,15 @@
+<div class='expense-form-container'>
+  <p class='form-title'>Add Expense</p>
+
+  <div class='card'>
+    <div class="card-body">
+      <%= simple_form_for [@organisation, @expense], local: true do |f| %>
+        <%= f.input :voices, as: :file, label: 'Voice Note', multiple: true, input_html: { class: 'expense-input' } %>
+        <%= f.input :images, as: :file, label: 'Receipt or Image', multiple: true, input_html: { class: 'expense-input' } %>
+        <%= f.input :pdfs, as: :file, label: 'Invoice or PDF', multiple: true, input_html: { class: 'expense-input' } %>
+        <%= f.input :reason, label: "Reason (optional, if not inferrable by AI)",  as: :text, input_html: { class: 'expense-input' } %>
+        <%= f.button :submit, "Add Expense", class: "btn-primary btn-smaller" %>
+      <% end %>
+    </div>
+  </div>
+</div>

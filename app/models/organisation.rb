@@ -4,6 +4,8 @@ class Organisation < ApplicationRecord
   belongs_to :owner, class_name: "User"
   has_many :employees, -> { where(role: "employee") }, class_name: "User"
 
+  has_many :expenses
+
   validates :owner, presence: true
 
 end
