@@ -4,7 +4,7 @@
     <div class="expense-card shadow-sm">
 
       <div class="expense-btns">
-        <%= button_to "Approve", approve_expense_path(expense), method: :patch, class: "btn btn-primary btn-sm" %>
+        <%= button_to "Approve", approve_expense_path(expense), method: :patch, class: "btn btn-primary btn-sm btn-duck-gold" %>
 
         <%= link_to reject_expense_path(expense), method: :patch, class: 'plain-link' do %>
           <i class="fa-solid fa-xmark" title="Reject expense"></i>

@@ -11,6 +11,7 @@ class OrganisationsController < ApplicationController
   def show
     @organisation = current_user.organisation
     @recent_chats = set_recent_chats
+    @expenses = @organisation.expenses.order(created_at: :desc)
   end
 
   def create

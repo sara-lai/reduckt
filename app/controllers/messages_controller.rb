@@ -4,7 +4,7 @@
 # also: re-using some of this for data extraction..... put in some other shared file?
 
 class MessagesController < ApplicationController
-  SYSTEM_PROMPT = "You are an expert accountant expense analyser for this organisation. You will answer queries about the state of expenses and deductions."
+  SYSTEM_PROMPT = "You are an expert accountant expense analyser for this organisation. You will answer queries about the state of expenses and deductions/valid tax write-offs."
 
   before_action :set_organisation
   before_action :set_recent_chats

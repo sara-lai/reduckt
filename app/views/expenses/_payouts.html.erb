@@ -1,2 +1,6 @@
-<p> payouts, todo </p>
-<%= render "expenses/list_all", expenses: @organisation.expenses %>
+<div class='section-heading'>
+  <div class='section-title'>Reimbursements Made</div>
+  <div class='section-subtitle'>Track what's officially paid or pending to your employees</div>
+</div>
+
+<%= render "expenses/list_all", expenses: expenses %>

@@ -4,10 +4,20 @@
   <div class='card'>
     <div class="card-body">
       <%= simple_form_for [@organisation, @expense], local: true do |f| %>
-        <%= f.input :voices, as: :file, label: 'Voice Note', multiple: true, input_html: { class: 'expense-input' } %>
-        <%= f.input :images, as: :file, label: 'Receipt or Image', multiple: true, input_html: { class: 'expense-input' } %>
-        <%= f.input :pdfs, as: :file, label: 'Invoice or PDF', multiple: true, input_html: { class: 'expense-input' } %>
+        <%= f.input :voice_notes, as: :file, label: 'Voice Note', input_html: { multiple: true, class: 'expense-input' } %>
+        <%= f.input :images, as: :file, label: 'Receipt or Image', input_html: { multiple: true, class: 'expense-input' } %>
+        <%= f.input :pdfs, as: :file, label: 'Invoice or PDF', input_html: { multiple: true, class: 'expense-input' } %>
         <%= f.input :reason, label: "Reason (optional, if not inferrable by AI)",  as: :text, input_html: { class: 'expense-input' } %>
+
+        <%= f.input :user_id,
+              collection: @organisation.employees,
+              label_method: :name,
+              value_method: :id,
+              include_blank: true,
+              label: "Associate with Employee (optional)",
+              required: false,
+              input_html: { class: 'expense-input' } %>
+
         <%= f.button :submit, "Add Expense", class: "btn-primary btn-smaller" %>
       <% end %>
     </div>

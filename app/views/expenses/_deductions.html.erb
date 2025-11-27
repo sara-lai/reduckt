@@ -1,2 +1,6 @@
-<p> deductions, todo </p>
-<%= render "expenses/list_all", expenses: @organisation.expenses %>
+<div class='section-heading'>
+  <div class='section-title'>Deductions</div>
+  <div class='section-subtitle'>Auto-generated collection of valid expenses for tax deductions/write-offs</div>
+</div>
+
+<%= render "expenses/list_all", expenses: expenses %>

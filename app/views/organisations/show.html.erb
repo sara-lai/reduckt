@@ -39,15 +39,15 @@
   <div class="expenses-panels">
 
     <div class="tab-panel active" id="expenses-panel" data-dashboard-tabs-target="tabPane">
-      <%= render "expenses/list_all", expenses: @organisation.expenses %>
+      <%= render "expenses/list_all", expenses: @expenses %>
     </div>
 
     <div class="tab-panel" id="deductions-panel" data-dashboard-tabs-target="tabPane">
-      <%= render "expenses/deductions", expenses: @organisation.expenses %>
+      <%= render "expenses/deductions", expenses: @expenses %>
     </div>
 
     <div class="tab-panel" id="payouts-panel" data-dashboard-tabs-target="tabPane">
-     <%= render "expenses/payouts", expenses: @organisation.expenses %>
+     <%= render "expenses/payouts", expenses: @expenses %>
     </div>
 
   </div>

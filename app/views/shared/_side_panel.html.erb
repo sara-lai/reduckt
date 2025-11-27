@@ -2,7 +2,7 @@
 <div class="sidebar position-sticky sticky-top pt-4">
   <ul class="nav flex-column px-3">
 
-    <%= button_to organisation_chats_path(@organisation), class: "btn btn-primary btn-smaller ai-button" do %>
+    <%= button_to organisation_chats_path(@organisation), class: "btn btn-primary btn-smaller ai-button btn-duck-gold" do %>
       <i class="fa-solid fa-wand-magic-sparkles"></i>
       Analysis & Insights
     <% end %>
@@ -12,20 +12,20 @@
     <li class="nav-item">
       <% if recent_chats.length > 0 %>
         <% recent_chats.each do |chat| %>
-          <%= link_to organisation_chat_path(@organisation, chat),
-              class: "nav-link sidebar-link-box #{current_page?(organisation_chat_path(@organisation, chat)) ? 'bg-primary text-white' : 'text-dark'} mb-1" do %>
+          <%= link_to organisation_chat_path(@organisation, chat), class: "nav-link sidebar-link-box mb-1",
+              style: "#{current_page?(organisation_chat_path(@organisation, chat)) ? 'background:rgba(255, 217, 95, .55);' : 'background:white;'}" do %>
 
             <div class="me-3">
-              <i class="fa-solid fa-chart-column text-primary"></i>
+              <i class="fa-solid fa-chart-column"></i>
             </div>
 
             <div class="flex-fill text-truncate">
               <div class="fw-semibold text-truncate">
-                <%= truncate(chat.title, length: 20) %>
+                <%= truncate(chat.title, length: 24) %>
               </div>
               <small class="text-muted text-truncate d-block">
                 <% if chat.messages.any? %>
-                  <%= truncate(chat.messages.last.content, length: 26) %>
+                  <%= truncate(chat.messages.last.content, length: 30) %>
                 <% else %>
                   No messages yet
                 <% end %>
