@@ -18,4 +18,7 @@ Rails.application.routes.draw do
     end
   end
 
+  patch '/expenses/:id/approve', to: 'expenses#approve', as: :approve_expense
+  patch '/expenses/:id/reject',  to: 'expenses#reject',  as: :reject_expense
+
 end

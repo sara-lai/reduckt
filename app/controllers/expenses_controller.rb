@@ -26,16 +26,16 @@ class ExpensesController < ApplicationController
     end
   end
 
-  def approve_expense
+  def approve
   end
 
-  def reject_expense
+  def reject
   end
 
   private
 
   def set_organisation
-    @organisation = Organisation.find(params[:organisation_id])
+    @organisation = current_user.organisation
   end
 
   def expense_params
@@ -43,7 +43,7 @@ class ExpensesController < ApplicationController
   end
 
   def set_recent_chats
-    @recent_chats = []
+    @recent_chats = @organisation.chats.order(updated_at: :desc).limit(10)
   end
 
 end

@@ -1,0 +1,55 @@
+<div class='all-expenses-container'>
+  <% expenses.each do |expense| %>
+
+    <div class="expense-card shadow-sm">
+
+      <div class="expense-btns">
+        <%= button_to "Approve", approve_expense_path(expense), method: :patch, class: "btn btn-primary btn-sm" %>
+
+        <%= link_to reject_expense_path(expense), method: :patch, class: 'plain-link' do %>
+          <i class="fa-solid fa-xmark" title="Reject expense"></i>
+          reject
+        <% end %>
+      </div>
+
+      <div class='expense-card-meta'>
+        <div class="fw-bold">
+          <%= number_to_currency(expense.amount) %>
+        </div>
+        <% if !expense.amount %>
+           <span class='small'>amount unspecified</span>
+        <%end %>
+
+        <div class="text-muted">
+          <%= expense.ai_title.presence || "uncategorized" %>
+        </div>
+
+        <div class="small text-secondary mt-1">
+          Submitted by <%= expense.user.name || "owner" %>
+        </div>
+      </div>
+
+      <div class='expense-card-attachments'>
+
+        <% if expense.images.attached? %>
+          <i class="fa-solid fa-image" title="Image attached"></i>
+        <% end %>
+
+        <% if expense.voice_notes.attached? %>
+          <i class="fa-solid fa-microphone" title="Audio attached"></i>
+        <% end %>
+
+        <% if expense.pdfs.attached? %>
+          <i class="fa-solid fa-file-pdf" title="PDF attached"></i>
+        <% end %>
+
+        <% if !expense.images.attached? && !expense.voice_notes.attached? && !expense.pdfs.attached? %>
+          <span class='small'>no attachments</span>
+        <% end %>
+
+      </div>
+    </div>
+
+
+  <% end %>
+</div>

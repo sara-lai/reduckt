@@ -1,5 +1,6 @@
 class OrganisationsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_recent_chats, except: [:new, :create]
   layout :choose_layout
 
   # using as onboarding
@@ -8,13 +9,8 @@ class OrganisationsController < ApplicationController
   end
 
   def show
-    # bug with my dashboard_path (id is nil)
-    if params[:id].blank?
-      @organisation = current_user.organisation
-    else
-      @organisation = Organisation.find(params[:id])
-    end
-    @recent_chats = []
+    @organisation = current_user.organisation
+    @recent_chats = set_recent_chats
   end
 
   def create
@@ -47,6 +43,10 @@ class OrganisationsController < ApplicationController
 
   def organisation_params
     params.require(:organisation).permit(:name)
+  end
+
+  def set_recent_chats
+    @recent_chats = current_user.organisation.chats.order(updated_at: :desc).limit(10)
   end
 
 end

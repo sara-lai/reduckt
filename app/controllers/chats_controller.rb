@@ -33,7 +33,7 @@ class ChatsController < ApplicationController
   end
 
   def set_recent_chats
-    @recent_chats = []
+    @recent_chats = @organisation.chats.order(updated_at: :desc).limit(10)
   end
 
 end

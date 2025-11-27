@@ -2,36 +2,21 @@
 <div class="sidebar position-sticky sticky-top pt-4">
   <ul class="nav flex-column px-3">
 
-    <li class="nav-item dash-caret-toggle">
-      <%= link_to "#", class: "nav-link text-dark", data: { action: "click->toggle#call" } do %>
-        <i class="fa-regular fa-square-caret-left"></i>
-      <% end %>
-    </li>
-
-    <div class='ai-button' style='width:100%;text-align:center;'>
-      <%= button_to organisation_chats_path(@organisation), class: "btn btn-primary btn-smaller ai-button" do %>
-        <i class="fa-solid fa-wand-magic-sparkles"></i>
-        Ai Insights
-      <% end %>
-    </div>
+    <%= button_to organisation_chats_path(@organisation), class: "btn btn-primary btn-smaller ai-button" do %>
+      <i class="fa-solid fa-wand-magic-sparkles"></i>
+      Analysis & Insights
+    <% end %>
 
     <li class="nav-item"><div class="my-3 border-top mb-4"></div></li>
 
     <li class="nav-item">
-      <h6 class="sidebar-heading px-3 text-uppercase fw-semibold text-muted d-flex align-items-center" style="margin-bottom:20px;">
-        <i class="fa-solid fa-comment-dots me-3"></i>
-        <span style='font-size:1rem;'>
-          Recent Queries
-        </span>
-      </h6>
-
       <% if recent_chats.length > 0 %>
         <% recent_chats.each do |chat| %>
-          <%= link_to chat_path(chat),
-                      class: "nav-link sidebar-link d-flex align-items-center py-2 px-3 rounded-3 text-decoration-none #{current_page?(chat_path(chat)) ? 'bg-primary text-white' : 'text-dark'} mb-1" do %>
+          <%= link_to organisation_chat_path(@organisation, chat),
+              class: "nav-link sidebar-link-box #{current_page?(organisation_chat_path(@organisation, chat)) ? 'bg-primary text-white' : 'text-dark'} mb-1" do %>
 
             <div class="me-3">
-              <i class="fa-solid fa-comment-dots text-primary"></i>
+              <i class="fa-solid fa-chart-column text-primary"></i>
             </div>
 
             <div class="flex-fill text-truncate">
