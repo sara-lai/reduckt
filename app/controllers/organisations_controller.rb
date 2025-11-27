@@ -25,12 +25,6 @@ class OrganisationsController < ApplicationController
     end
   end
 
-  def add_employee
-  end
-
-  def remove_employee
-  end
-
   private
 
   def choose_layout

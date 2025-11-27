@@ -1,7 +1,8 @@
-<div style='display:flex; justify-content:center'>
-  <div class="chat-wrapper"'>
+<div class="chat-wrapper"'>
 
-    <h1 id="chat_title" class='form-title'>
+  <div class='chat-top-half'>
+
+    <h1 id="chat_title">
       <%= @chat.title %>
     </h1>
 
@@ -9,8 +10,9 @@
       <%= render "messages/messages", messages: @chat.messages %>
     </div>
 
-    <div id="new_message_container" class='message-form-bottom'>
-      <%= render "messages/form", chat: @chat, message: @message %>
-    </div>
+  </div>
+
+  <div id="new_message_container" class='message-form-bottom'>
+    <%= render "messages/form", chat: @chat, message: @message %>
   </div>
 </div>

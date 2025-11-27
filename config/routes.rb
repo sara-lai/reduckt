@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   resources :organisations, only: [:new, :show, :create] do
     resources :expenses, only: [:new, :create, :show, :index]
 
+    resources :employees, only: [:index, :new, :create, :destroy]
+
     resources :chats, only: [:index, :show, :create, :destroy] do
       resources :messages, only: [:create]
     end

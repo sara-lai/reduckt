@@ -82,3 +82,5 @@ gem "image_processing", "~> 1.2"
 gem "kramdown"
 gem "rouge"
 gem "kramdown-parser-gfm"
+
+gem 'devise_invitable'

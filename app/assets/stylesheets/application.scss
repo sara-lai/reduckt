@@ -228,6 +228,8 @@
   flex: 1;
   overflow-y: auto;
   padding: "30px";
+  overflow: hidden;
+  position: relative;
 }
 
 .dashboard-top-level {
@@ -260,23 +262,33 @@
 
 // going for cool full screen chat /form at bottom
 .chat-wrapper {
-  height: 90vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
-  max-width: 800px;
-  padding: 20px;
+  justify-content: flex-start;
+}
+
+.chat-top-half {
+  flex: 1 1 auto; // make grow/shrink
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 30px;
 }
 
 #messages {
-  flex: 1;
+  flex: 1 1 auto;
   overflow-y: auto;
-  padding-bottom: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 280px; // disappearing behind form bug
 }
 
 .message-form-bottom{
-  position: sticky;
+  position: fixed;
   bottom: 0;
+  left: 320px;
+  right: 0;
   background: white;
   padding: 20px;
   border-top: 1px solid #e5e5e5;
@@ -327,14 +339,12 @@
   gap: 20px;
 }
 
-
-
 .dashboard-tabs {
   display: flex;
   gap: 1rem;
   border-bottom: 2px solid #ddd;
   background: white;
-  justify-content: center;
+  justify-content: space-around;
   height: 60px;
 }
 
@@ -387,4 +397,37 @@
 }
 .tab-panel.active {
   display: block;
+}
+
+
+.employees_container {
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.employees-list {
+  flex: 1;
+}
+
+.add-employee {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.add-employee-modal {
+  min-width: 760px;
+  margin-top: 200px;
+}
+
+.add-employee-modal .modal-content {
+  padding: 30px;
+}
+
+.employee-row {
+  display: flex;
+  gap: 20px;
 }

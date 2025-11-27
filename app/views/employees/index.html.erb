@@ -1,0 +1,52 @@
+<div class='employees_container'>
+
+  <div class='employees-list'>
+    <div class='form-title'>Your Employees (<%= @employees.count %>)</div>
+    <% @employees.each do |employee| %>
+        <div class='card mb-2'>
+          <div class="card-body">
+            <div class='employee-row'>
+              <div>
+                <% if employee.invitation_status == 'pending' %>
+                  pending
+                <% end %>
+              </div>
+              <div>
+                <%= employee.name %>
+              </div>
+              <div>
+                <%= employee.email %>
+              </div>
+            </div>
+          </div>
+        </div>
+    <% end %>
+  </div>
+
+
+  <div class='add-employee'>
+    <%= button_tag type: "button", class: "btn btn-primary btn-md", data: { bs_toggle: "modal", bs_target: "#addEmployeeModal" } do %>
+      <i class="fa-solid fa-user" style='margin-right:6px;'></i>
+      Add Employee
+    <% end %>
+  </div>
+</div>
+
+
+<div class="modal fade" id="addEmployeeModal" tabindex="-1" aria-labelledby="addEmployeeModalLabel" aria-hidden="true">
+  <div class="modal-dialog add-employee-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addEmployeeModalLabel">Add Employee</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for @employee, url: organisation_employees_path(@organisation), local: true do |f|  %>
+          <%= f.input :name, input_html: { class: 'onboarding-input' } %>
+          <%= f.input :email, input_html: { class: 'onboarding-input' } %>
+          <%= f.submit "Send Invite", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

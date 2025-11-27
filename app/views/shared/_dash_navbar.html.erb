@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-sm navbar-light navbar-lewagon border-bottom shadow-sm">
   <div class="container-fluid">
-    <%= link_to "/dashboard", class: "navbar-brand" do %>
-      <%= image_tag "duck-test.png", alt: "logo", style: 'height:28px;width:28px;' %>
+    <%= link_to "/dashboard", class: "navbar-brand", style: 'padding-left:100px;' do %>
+      <%= image_tag "duck-test.png", alt: "logo", style: 'height:32px;width:32px;' %>
     <% end %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,7 +13,7 @@
         <% if user_signed_in? %>
           <div class='navbar-spacing-solver'>
             <li class="nav-item">
-              <%= link_to "#", class: "nav-link" do %>
+              <%= link_to organisation_employees_path(@organisation), class: "nav-link" do %>
                 <i class="fa-users fa-solid"></i> Manage Employees
               <% end %>
             </li>
