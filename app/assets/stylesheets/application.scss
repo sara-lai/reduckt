@@ -33,9 +33,21 @@
   color: rgb(14, 0, 0);
 }
 
+.duck-golden {
+  background: rgba(255, 217, 95, .3) !important;
+}
+
+.misc-light-red {
+  background: rgba(241, 65, 65, .1) !important;
+}
+
 .btn-curved {
   border-radius: 10px;
 }
+
+// .form-select, .form-control {
+//   background: white;
+// }
 
 .form-title {
   font-size: 3rem;
@@ -48,6 +60,8 @@
   text-decoration: none;
   cursor: pointer;
   transition: color 0.2s;
+  background: none;
+  border: none;
 }
 
 .card {
@@ -324,9 +338,10 @@
   border: 1px solid #eee;
   border-radius: 16px;
   border-radius: 10px;
-  width: 90%;
+  width: 94%;
   padding: 4px 20px;
   height: 50px;
+  cursor: pointer;
 }
 
 .expense-card i {

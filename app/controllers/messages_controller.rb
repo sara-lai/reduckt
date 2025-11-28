@@ -1,7 +1,7 @@
 # this was copied & adjusted from CoOwners (older state before Assistants API) & based entirely on lectures
-# brainstorm:
-# for org insights, we can pass in the org's expense data with each query.... [RAG tomorrow nice to have?]
-# also: re-using some of this for data extraction..... put in some other shared file?
+# brainstorm / todo:
+# a) RAG -> do a query from my vector DB, then send subset to GPT + user query
+# b) just send expenses in initial message
 
 class MessagesController < ApplicationController
   SYSTEM_PROMPT = "You are an expert accountant expense analyser for this organisation. You will answer queries about the state of expenses and deductions/valid tax write-offs."
@@ -71,12 +71,24 @@ class MessagesController < ApplicationController
     end
   end
 
+  def expenses_context
+    expenses_data = []
+    current_user.organisation.expenses.each do |expense|
+      expenses_data.push({
+        expense: expense.attributes,
+        employee: expense.user.name
+      })
+    end
+    "The expenses data is: #{expenses_data}"
+  end
+
   def organisation_context
-    "Here is the context of the organisation: #{@organisation.name}."
+    "The organisation is called #{@organisation.name}."
   end
 
   def instructions
-    [SYSTEM_PROMPT, organisation_context].compact.join("\n\n")
+    # todo - only add the expenses_context the first message
+    [SYSTEM_PROMPT, organisation_context, expenses_context].compact.join("\n\n")
   end
 
   def message_params

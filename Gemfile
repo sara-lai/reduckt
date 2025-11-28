@@ -84,3 +84,5 @@ gem "rouge"
 gem "kramdown-parser-gfm"
 
 gem 'devise_invitable'
+
+gem "neighbor"

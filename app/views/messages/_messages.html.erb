@@ -18,7 +18,9 @@
       <div class="px-3 pb-0 pt-3">
         <div class='duck-message-text'>
           <%= image_tag "duck-test.png", alt: "logo", style: 'height:30px;width:30px;' %>
-          <%= raw(render_markdown(message.content)) %>
+          <div>
+            <%= raw(render_markdown(message.content)) %>
+          </div>
         </div>
       </div>
     </div>

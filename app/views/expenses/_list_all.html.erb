@@ -1,14 +1,26 @@
 <div class='all-expenses-container'>
   <% expenses.each do |expense| %>
 
-    <div class="expense-card shadow-sm">
+    <div class="expense-card shadow-sm <%= 'duck-golden' if expense.status == 'approved' %> <%= 'misc-light-red' if expense.status == 'rejected' %>">
 
       <div class="expense-btns">
-        <%= button_to "Approve", approve_expense_path(expense), method: :patch, class: "btn btn-primary btn-sm btn-duck-gold" %>
+        <% if expense.status == 'pending' %>
+          <%= button_to "Approve", approve_expense_path(expense), method: :patch, class: "btn btn-primary btn-sm btn-duck-gold" %>
 
-        <%= link_to reject_expense_path(expense), method: :patch, class: 'plain-link' do %>
-          <i class="fa-solid fa-xmark" title="Reject expense"></i>
-          reject
+          <%= button_to reject_expense_path(expense), method: :patch, class: 'plain-link' do %>
+            <i class="fa-solid fa-xmark" title="Reject expense"></i>
+            reject
+          <% end %>
+        <% elsif expense.status == 'approved' %>
+          <div>
+            <i class='fa-solid fa-check'></i>
+            approved
+          </div>
+        <% elsif expense.status == 'rejected' %>
+          <div>
+            <i class="fa-solid fa-xmark"></i>
+            rejected
+          </div>
         <% end %>
       </div>
 

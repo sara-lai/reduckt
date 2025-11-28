@@ -12,6 +12,8 @@ class OrganisationsController < ApplicationController
     @organisation = current_user.organisation
     @recent_chats = set_recent_chats
     @expenses = @organisation.expenses.order(created_at: :desc)
+    @deductions = @organisation.expenses.where(valid_deduction: true)
+    @payouts = @organisation.expenses.where(status: 'approved', has_reimbursed: false)
   end
 
   def create

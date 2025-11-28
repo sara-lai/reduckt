@@ -17,6 +17,7 @@ class ExpensesController < ApplicationController
   def create
     @expense = @organisation.expenses.build(expense_params)
     @expense.user ||= current_user
+    @expense.status = 'pending'
 
     if @expense.save
 
@@ -63,9 +64,18 @@ class ExpensesController < ApplicationController
   end
 
   def approve
+    @expense = @organisation.expenses.find(params[:id])
+    @expense.status = 'approved'
+    @expense.has_reimbursed = false
+    @expense.save
+    redirect_to organisation_path(@organisation), notice: 'Expense approved.'
   end
 
   def reject
+    @expense = @organisation.expenses.find(params[:id])
+    @expense.status = 'rejected'
+    @expense.save
+    redirect_to organisation_path(@organisation), notice: 'Expense rejected.'
   end
 
   private
