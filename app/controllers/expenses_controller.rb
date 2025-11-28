@@ -1,3 +1,5 @@
+require "open-uri"
+
 class ExpensesController < ApplicationController
 
   before_action :set_organisation
@@ -93,7 +95,9 @@ class ExpensesController < ApplicationController
     elsif file.audio?
       temp_file = Tempfile.new(["audio", File.extname(@expense.voice_notes[0].filename.to_s)])
 
-      URI.open(@expense.voice_notes[0].file.url) do |remote_file|
+      # todo - doesnt work mp4/ m4a files
+
+      URI.open(@expense.voice_notes[0].blob.url) do |remote_file|
         IO.copy_stream(remote_file, temp_file)
       end
 
