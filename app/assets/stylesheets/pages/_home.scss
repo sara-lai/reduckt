@@ -134,3 +134,62 @@
 .landing-spacer {
   height: 100px;
 }
+
+
+// attempt at css bg grid
+.grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(128,128,128,0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(128,128,128,0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+
+
+
+.features-section {
+  padding: 80px 0;
+  text-align: center;
+}
+.features-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.feature-box {
+  width: 300px;
+  padding: 24px;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+}
+
+.feature-title {
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+.feature-illustration {
+  width: 100%;
+  height: 140px;
+  background: #f7f7f7;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.feature-description {
+  font-size: 15px;
+  color: #444;
+  line-height: 1.5;
+}
