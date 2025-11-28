@@ -6,20 +6,19 @@
     <button class="tab-btn" data-tab="payouts" data-action="click->dashboard-tabs#call" data-dashboard-tabs-target="tabButton">Payouts</button>
   </div>
 
-  <div class="dashboard-filters">
+  <div class="dashboard-filters" data-controller="dashboard-filters">
 
-    <select class="form-select form-select-md">
-      <option value="">All Statuses</option>
-      <option value="pending">Pending</option>
-      <option value="approved">Approved</option>
-      <option value="rejected">Rejected</option>
-      <option value="rejected">Paid</option>
+    <select data-dashboard-filters-target="status" class="form-select form-select-md" data-action="change->dashboard-filters#filterStatus">
+      <option value="all">All Statuses</option>
+      <option value="pending" <%= 'selected' if params[:status] == 'pending' %>>Pending</option>
+      <option value="approved" <%= 'selected' if params[:status] == 'approved' %>>Approved</option>
+      <option value="rejected" <%= 'selected' if params[:status] == 'rejected' %>>Rejected</option>
     </select>
 
-    <select class="form-select form-select-md">
-      <option value="">All Employees</option>
+    <select data-dashboard-filters-target="employee" class="form-select form-select-md" data-action="change->dashboard-filters#filterEmployee">
+      <option value="all">All Employees</option>
       <% @organisation.employees.each do |user| %>
-        <option value="<%= user.id %>"><%= user.name %></option>
+        <option value="<%= user.id %>" <%= 'selected' if params[:employee_id] == user.id.to_s %>><%= user.name %></option>
       <% end %>
     </select>
 

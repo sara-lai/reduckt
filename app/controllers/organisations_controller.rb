@@ -11,9 +11,19 @@ class OrganisationsController < ApplicationController
   def show
     @organisation = current_user.organisation
     @recent_chats = set_recent_chats
-    @expenses = @organisation.expenses.order(created_at: :desc)
-    @deductions = @organisation.expenses.where(valid_deduction: true)
-    @payouts = @organisation.expenses.where(status: 'approved', has_reimbursed: false)
+
+    expenses_scope = @organisation.expenses.order(created_at: :desc)
+
+    if params[:status].present?
+      expenses_scope = expenses_scope.where(status: params[:status])
+    end
+    if params[:employee].present?
+      expenses_scope = expenses_scope.where(user_id: params[:employee])
+    end
+
+    @expenses = expenses_scope
+    @deductions = expenses_scope.where(valid_deduction: true, status: 'approved')
+    @payouts = expenses_scope.where(status: 'approved', has_reimbursed: false)
   end
 
   def create

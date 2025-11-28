@@ -32,10 +32,10 @@
                 <%= link_to dashboard_path, class: "dropdown-item" do %>
                   <i class="fa-solid fa-star-of-life me-2"></i> Dashboard
                 <% end %>
-                <%= link_to "#", class: "dropdown-item" do %>
+                <%= link_to organisation_employees_path(@organisation), class: "dropdown-item" do %>
                   <i class="fa-user fa-solid"></i> Manage Employees
                 <% end %>
-                <%= link_to "#", class: "dropdown-item" do %>
+                <%= link_to new_organisation_expense_path(@organisation), class: "dropdown-item" do %>
                   <i class="fa-add fa-solid"></i> Quick Add Expense
                 <% end %>
                 <%= link_to "#", class: "dropdown-item" do %>
