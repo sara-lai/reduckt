@@ -23,7 +23,7 @@ class ExpensesController < ApplicationController
 
   def create
     if mobile_demo?
-      console.log('request from mobile app')
+      puts '\n\nrequest from mobile app!!!\n\n'
       @organisation = Organisation.find(35)
       @xpense = @organisation.expenses.build(expense_params)
       @expense.user = User.find(39)
