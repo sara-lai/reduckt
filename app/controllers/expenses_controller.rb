@@ -24,10 +24,9 @@ class ExpensesController < ApplicationController
   def create
     if mobile_demo?
       console.log('request from mobile app')
-      # todo - hardcode Nero & RomeOrg
-      @organisation = Organisation.last
+      @organisation = Organisation.find(35)
       @xpense = @organisation.expenses.build(expense_params)
-      @expense.user = User.last
+      @expense.user = User.find(39)
       @expense.status = 'pending'
     else
       @expense = @organisation.expenses.build(expense_params)
