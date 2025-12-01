@@ -2,6 +2,10 @@ require "open-uri"
 
 class ExpensesController < ApplicationController
 
+  # testing mobile without a current_user for mobile users
+  skip_before_action :set_organisation, if: -> { mobile_demo? }
+  skip_before_action :set_recent_chats,  if: -> { mobile_demo? }
+
   before_action :set_organisation
   before_action :set_recent_chats
   layout "dashboard"
@@ -17,9 +21,18 @@ class ExpensesController < ApplicationController
   end
 
   def create
-    @expense = @organisation.expenses.build(expense_params)
-    @expense.user ||= current_user
-    @expense.status = 'pending'
+    if mobile_demo?
+      console.log('request from mobile app')
+      # todo - hardcode Nero & RomeOrg
+      @organisation = Organisation.last
+      @xpense = @organisation.expenses.build(expense_params)
+      @expense.user = User.last
+      @expense.status = 'pending'
+    else
+      @expense = @organisation.expenses.build(expense_params)
+      @expense.user ||= current_user
+      @expense.status = 'pending'
+    end
 
     if @expense.save
 
@@ -55,13 +68,17 @@ class ExpensesController < ApplicationController
 
         @expense.save
         puts "saved expense again, is now", @expense
-
       end
 
-      # todo - format block for json (mobile client)
-      redirect_to organisation_path(@organisation), notice: 'Expense created successfully.'
+      respond_to do |format|
+        format.html { redirect_to organisation_path(@organisation), notice: 'Expense created successfully.' }
+        format.json { render json: { success: true, status: :created }}
+      end
     else
-      render :new, status: :unprocessable_entity
+      respond_to do |format|
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: { success: false, status: :unprocessable_entity }}
+      end
     end
   end
 
@@ -148,6 +165,10 @@ class ExpensesController < ApplicationController
 
   def set_recent_chats
     @recent_chats = @organisation.chats.order(updated_at: :desc).limit(10)
+  end
+
+  def mobile_demo?
+    params[:mobile_demo] == "yes"
   end
 
 end
