@@ -2,10 +2,16 @@ require "open-uri"
 
 class ExpensesController < ApplicationController
 
+  # more testing mobile
+  # https://api.rubyonrails.org/v7.0.8.7/classes/ActionController/RequestForgeryProtection.html
+  # protect_from_forgery with: :null_session
+  skip_forgery_protection
+
   before_action :set_organisation
   before_action :set_recent_chats
 
   # testing mobile without a current_user for mobile users
+  skip_before_action :authenticate_user!, if: -> { mobile_demo? }
   skip_before_action :set_organisation, if: -> { mobile_demo? }
   skip_before_action :set_recent_chats,  if: -> { mobile_demo? }
 
@@ -23,10 +29,12 @@ class ExpensesController < ApplicationController
 
   def create
     if mobile_demo?
-      puts '\n\nrequest from mobile app!!!\n\n'
       @organisation = Organisation.find(35)
-      @xpense = @organisation.expenses.build(expense_params)
+      #@organisation = Organisation.last
+      @expense = @organisation.expenses.build(expense_params)
       @expense.user = User.find(39)
+      #puts "here", User.last, @expense
+      #@expense.user = User.last
       @expense.status = 'pending'
     else
       @expense = @organisation.expenses.build(expense_params)
