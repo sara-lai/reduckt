@@ -2,12 +2,13 @@ require "open-uri"
 
 class ExpensesController < ApplicationController
 
+  before_action :set_organisation
+  before_action :set_recent_chats
+
   # testing mobile without a current_user for mobile users
   skip_before_action :set_organisation, if: -> { mobile_demo? }
   skip_before_action :set_recent_chats,  if: -> { mobile_demo? }
 
-  before_action :set_organisation
-  before_action :set_recent_chats
   layout "dashboard"
 
   def index
