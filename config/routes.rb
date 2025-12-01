@@ -23,4 +23,6 @@ Rails.application.routes.draw do
   patch '/expenses/:id/approve', to: 'expenses#approve', as: :approve_expense
   patch '/expenses/:id/reject',  to: 'expenses#reject',  as: :reject_expense
 
+  post '/test_mobile', to: 'expenses#create'
+
 end
