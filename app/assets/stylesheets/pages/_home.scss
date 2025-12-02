@@ -79,7 +79,7 @@
 }
 .mobile-app-title-box {
   max-width: 800px;
-  font-size: 2rem;
+  font-size: 2.6rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -105,8 +105,8 @@
 
   video {
     border-radius: 8px;
-    max-height: 400px;
-    max-width: 400px;
+    max-height: 440px;
+    max-width: 440px;
     display: block;
   }
 }
@@ -115,7 +115,7 @@
 }
 
 .mobile-app-imgs img {
-  max-height: 440px;
+  max-height: 500px;
 }
 
 .landing-body-misc {
@@ -138,6 +138,7 @@
   gap: 40px;
   padding-top: 20px;
   padding-bottom: 20px;
+  height: 90vh;
 }
 
 .landing-spacer {
@@ -159,24 +160,30 @@
 
 
 .features-section {
-  padding: 80px 0;
+  padding-bottom: 80px;
   text-align: center;
+}
+.features-section-title {
+  font-weight: 700;
+  font-size: 2.6rem;
+  margin-bottom: 30px;
 }
 .features-grid {
   display: flex;
   justify-content: center;
   gap: 30px;
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
 .feature-box {
-  width: 300px;
+  width: 340px;
   padding: 24px;
   border-radius: 12px;
   border: 1px solid #eee;
   background: #fff;
   box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .feature-title {
@@ -185,20 +192,293 @@
 }
 .feature-illustration {
   width: 100%;
-  height: 140px;
-  background: #f7f7f7;
+  background: #eee;
   border-radius: 8px;
   margin-bottom: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #999;
-  font-size: 14px;
-  font-style: italic;
+  overflow: hidden;
+  padding: 18px;
+  box-sizing: border-box;
 }
+
+.feature-illustration img {
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  object-fit: contain;
+  opacity: .8;
+}
+
 
 .feature-description {
   font-size: 15px;
   color: #444;
   line-height: 1.5;
+}
+
+
+
+// pricing page
+
+.pricing-container {
+  background-color: #f5f3f0;
+  max-width: 1200px;
+  color: #1a1a1a;
+  padding: 3rem 2rem;
+  line-height: 1.6;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.pricing-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.pricing-billing-toggle {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.pricing-billing-toggle input[type="radio"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #666;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s;
+}
+
+.pricing-billing-toggle input[type="radio"]:checked {
+  border-color: #1a1a1a;
+}
+
+.pricing-billing-toggle input[type="radio"]:checked::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background-color: #1a1a1a;
+  border-radius: 50%;
+}
+
+.pricing-billing-toggle label {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.pricing-save-badge {
+  font-weight: 500;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.pricing-card {
+  background: white;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+.pricing-card:hover {
+  border-color: #c5c5c5;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.pricing-plan-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.pricing-plan-description {
+  color: #4a4a4a;
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+  min-height: 60px;
+}
+
+.price-section {
+  margin-bottom: 2rem;
+}
+
+.pricing-starting-from {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 0.25rem;
+}
+
+.price {
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.price-small {
+  font-size: 1.2rem;
+}
+
+.pricing-billing-period {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.pricing-contact-pricing {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 1rem 0;
+}
+
+.pricing-cta-button {
+  width: 100%;
+  padding: 0.9rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.pricing-cta-primary {
+  background-color: #2d2d2d;
+  color: white;
+}
+
+.pricing-cta-primary:hover {
+  background-color: #1a1a1a;
+}
+
+.pricing-cta-primary::after {
+  content: ' →';
+}
+
+.pricing-secondary-link {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.pricing-secondary-link a {
+  color: #1a1a1a;
+  text-decoration: underline;
+  font-size: 0.9rem;
+}
+
+.pricing-features-section {
+  border-top: 1px solid #e5e5e5;
+  padding-top: 1.5rem;
+}
+
+.pricing-features-title {
+  font-weight: 600;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.pricing-features-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.pricing-features-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #4a4a4a;
+}
+
+.pricing-features-list li::before {
+  content: '✓';
+  color: #4a4a4a;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.pricing-info-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  border: 1px solid #999;
+  border-radius: 50%;
+  font-size: 10px;
+  color: #999;
+  margin-left: 4px;
+  cursor: help;
+  flex-shrink: 0;
+}
+
+.pricing-underlined {
+  text-decoration: underline;
+}
+
+.pricing-footer-cta {
+  text-align: center;
+}
+
+.pricing-see-all-button {
+  padding: 0.85rem 2rem;
+  background: white;
+  border: 1px solid #d1d1d1;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pricing-see-all-button:hover {
+  border-color: #999;
+  background-color: #fafafa;
+}
+
+.pricing-see-all-button::before {
+  content: '+';
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+
+.landing-footer {
+  background-color: white;
+  padding: 12px;
+  text-align: center;
+  font-size: 16px;
+  color: #333;
+  border-top: 1px solid #eee;
 }

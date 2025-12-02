@@ -21,16 +21,18 @@
 
   </div>
 
-  <div class='landing-spacer'></div>
+  <div class='landing-spacer' id='features'></div>
 
   <section class="features-section">
 
-    <h2 class="form-title">WIP Section</h2>
+    <h2 class="features-section-title">ReDuckt Features</h2>
 
     <div class="features-grid">
       <div class="feature-box">
         <h3 class="feature-title">Expense + Reimburse</h3>
-        <div class="feature-illustration">[ Illustration ]</div>
+        <div class="feature-illustration">
+          <%= image_tag "duck-lunch.png", alt: "ducks at lunch" %>
+        </div>
         <p class="feature-description">
           Automatic expense creation & management with OCR, voice-to-text, and multi modal AI
         </p>
@@ -38,15 +40,19 @@
 
       <div class="feature-box">
         <h3 class="feature-title">Unlock Deductions</h3>
-        <div class="feature-illustration">[ Illustration ]</div>
+        <div class="feature-illustration">
+          <%= image_tag "duck-savvy.png", alt: "duck business savvy" %>
+        </div>
         <p class="feature-description">
-          Based on your business, AI categeorization of valid deductable expense for tax savings.
+          AI categeorization of valid deductable expenses for tax savings, based on your type of business.
         </p>
       </div>
 
       <div class="feature-box">
         <h3 class="feature-title">Organisation Insights</h3>
-        <div class="feature-illustration">[ Illustration ]</div>
+        <div class="feature-illustration">
+          <%= image_tag "duck-ceo.png", alt: "duck leading meeeting" %>
+        </div>
         <p class="feature-description">
           AI-powered insights for tracking employee spending, spending categories, and more.
         </p>
@@ -54,7 +60,7 @@
     </div>
   </section>
 
-  <div class='landing-spacer'></div>
+  <div class='landing-spacer' id='for-employees'></div>
 
   <div class='mobile-app-section'>
 
@@ -75,10 +81,19 @@
         </video>
       </div>
     </div>
+    <%= image_tag "app-store-btn2.png", alt: "app-btns", style: "height:60px;opacity:.9;cursor:pointer;" %>
+
+    <%= image_tag "test-arrow-fun2.png", alt: "arrow", style:"height:400px;margin-top:-10px;" %>
 
   </div>
 
+  <div class='landing-spacer' id='pricing-section'></div>
+
+  <%= render "landing/pricing" %>
+
   <div class='landing-spacer'></div>
+
+  <%= render "landing/footer" %>
 
 
 </div>

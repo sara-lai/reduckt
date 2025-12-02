@@ -1,0 +1,135 @@
+<div class="pricing-container">
+
+  <div class="pricing-header">
+    <div class="pricing-billing-toggle">
+      <label>
+        <input type="radio" name="billing-toggle" id="pricing-toggle-monthly">
+        Pay monthly
+      </label>
+      <label>
+        <input type="radio" name="billing-toggle" id="pricing-toggle-yearly" checked>
+        Pay yearly <span class="pricing-save-badge">(Save 33%)</span>
+      </label>
+    </div>
+  </div>
+
+  <div class="pricing-grid">
+
+    <div class="pricing-card">
+      <h2 class="pricing-plan-title">Individual</h2>
+      <p class="pricing-plan-description">Perfect for solo contractors to track expenses and deductions efficiently.</p>
+
+      <div class="price-section">
+        <div class="pricing-starting-from">Starting from</div>
+        <div class="monthly-price" style='display:none;'>
+          <div class="price">$12 <span class="price-small">/mo</span></div>
+        </div>
+        <div class="yearly-price">
+          <div class="price">$9 <span class="price-small">/mo</span></div>
+        </div>
+        <div class="pricing-billing-period">Billed annually</div>
+      </div>
+
+      <button class="pricing-cta-button pricing-cta-primary">Try it free</button>
+
+      <div class="pricing-features-section">
+        <h3 class="pricing-features-title">Individual plan features:</h3>
+        <ul class="pricing-features-list">
+          <li>Unlimited expense tracking <span class="pricing-info-icon">i</span></li>
+          <li>Deduction categorization <span class="pricing-info-icon">i</span></li>
+          <li>Basic reports and tax prep tools <span class="pricing-info-icon">i</span></li>
+          <li>Email support <span class="pricing-info-icon">i</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pricing-card">
+      <h2 class="pricing-plan-title">Team</h2>
+      <p class="pricing-plan-description">Reimbursements and deductions for your entire team, plus integrations in your existing workflow</p>
+
+      <div class="price-section">
+        <div class="pricing-starting-from">Starting from</div>
+        <div class="monthly-price">
+          <div class="price">$49 <span class="price-small">/mo</span></div>
+        </div>
+        <div class="yearly-price">
+          <div class="price">$33 <span class="price-small">/mo</span></div>
+        </div>
+        <div class="pricing-billing-period">Billed annually</div>
+      </div>
+
+      <button class="pricing-cta-button pricing-cta-primary">Try it free</button>
+
+      <div class="pricing-features-section">
+        <h3 class="pricing-features-title">Everything in Individual, plus:</h3>
+        <ul class="pricing-features-list">
+          <li>Up to 5 employees <span class="pricing-info-icon">i</span></li>
+          <li>Shared access and folders <span class="pricing-info-icon">i</span></li>
+          <li>AI organization insights <span class="pricing-info-icon">i</span></li>
+          <li>Accounting integrations <span class="pricing-info-icon">i</span></li>
+          <li>Payroll integrations <span class="pricing-info-icon">i</span></li>
+          <li>Live chat support <span class="pricing-info-icon">i</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pricing-card">
+      <h2 class="pricing-plan-title">Team++</h2>
+      <p class="pricing-plan-description">Advanced collaboration for larger teams with premium features.</p>
+
+      <div class="price-section">
+        <div class="pricing-starting-from">Starting from</div>
+        <div class="monthly-price">
+          <div class="price">$132 <span class="price-small">/mo</span></div>
+        </div>
+        <div class="yearly-price">
+          <div class="price">$99 <span class="price-small">/mo</span></div>
+        </div>
+        <div class="pricing-billing-period">Billed annually</div>
+      </div>
+
+      <button class="pricing-cta-button pricing-cta-primary">Purchase</button>
+      <div class="pricing-secondary-link">
+        <a href="#">Contact Sales</a>
+      </div>
+
+      <div class="pricing-features-section">
+        <h3 class="pricing-features-title">Everything in Team, plus:</h3>
+        <ul class="pricing-features-list">
+          <li>Up to 25 employees <span class="pricing-info-icon">i</span></li>
+          <li>Advanced AI insights <span class="pricing-info-icon">i</span></li>
+          <li>Mileage Tracking <span class="pricing-info-icon">i</span></li>
+          <li>SAML SSO <span class="pricing-info-icon">i</span></li>
+          <li>Premier support <span class="pricing-info-icon">i</span></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="pricing-footer-cta">
+    <button class="pricing-see-all-button">See all features</button>
+  </div>
+
+  <script>
+    const monthlyPrices = document.querySelectorAll('.monthly-price');
+    const yearlyPrices = document.querySelectorAll('.yearly-price');
+
+    document.querySelectorAll('.pricing-billing-toggle input[type="radio"]').forEach(radio => {
+      radio.addEventListener('change', function() {
+        if (this.id === 'pricing-toggle-monthly') {
+          monthlyPrices.forEach(el => el.style.display = 'block');
+          yearlyPrices.forEach(el => el.style.display = 'none');
+        } else {
+          monthlyPrices.forEach(el => el.style.display = 'none');
+          yearlyPrices.forEach(el => el.style.display = 'block');
+        }
+      });
+    });
+
+    const initialToggle = document.querySelector('.pricing-billing-toggle input:checked');
+    if (initialToggle) {
+        initialToggle.dispatchEvent(new Event('change'));
+    }
+  </script>
+</div>
