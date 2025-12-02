@@ -33,7 +33,6 @@ class ExpensesController < ApplicationController
       #@organisation = Organisation.last
       @expense = @organisation.expenses.build(expense_params)
       @expense.user = User.find(39)
-      #puts "here", User.last, @expense
       #@expense.user = User.last
       @expense.status = 'pending'
     else
@@ -58,8 +57,11 @@ class ExpensesController < ApplicationController
         end
 
         puts @response.content
-        # source of bugs, really really needs json only response
-        content = JSON.parse(@response.content)
+        # using schema to ensure always json
+        # https://rubyllm.com/chat/#getting-structured-output
+        # content = JSON.parse(@response.content) .... rubyllm now returns as ruby obj with schema
+        content = @response.content
+
         full_text = content["full_text"]
         title = content["title"]
         category = content["category"]
@@ -126,16 +128,31 @@ class ExpensesController < ApplicationController
         IO.copy_stream(remote_file, temp_file)
       end
 
-      run_extraction(audio_prompt, model: "gpt-4o-audio-preview", with: { audio: temp_file.path })
+      # swapping out gpt-4o-audio-preview bc limited file types
+      run_extraction(audio_prompt, model: "gemini-2.0-flash", with: { audio: temp_file.path })
       temp_file.unlink
     end
   end
 
   def run_extraction(instructions, model: "gpt-4.1-nano", with: {})
+    # https://rubyllm.com/chat/#getting-structured-output
+    expense_schema = {
+      type: 'object',
+      properties: {
+        full_text: { type: 'string' },
+        title: { type: 'string' },
+        category: { type: 'string' },
+        amount: { type: 'integer' },
+        valid_deduction: { type: 'boolean' },
+      },
+      required: ['full_text', 'title', 'category', 'amount', 'valid_deduction'],
+      additionalProperties: false # required for osome models
+    }
+
     @ruby_llm_chat = RubyLLM.chat(model: model)
     @ruby_llm_chat.with_instructions(instructions)
     message_content = "Here is an expense" # if user submits custom reason, may want to include
-    @response = @ruby_llm_chat.ask(message_content, with: with)
+    @response = @ruby_llm_chat.with_schema(expense_schema).ask(message_content, with: with)
   end
 
   def audio_prompt
