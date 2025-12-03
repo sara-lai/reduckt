@@ -186,6 +186,11 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.feature-box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+}
+
 .feature-title {
   font-size: 20px;
   margin-bottom: 16px;
@@ -223,7 +228,6 @@
 // pricing page
 
 .pricing-container {
-  background-color: #f5f3f0;
   max-width: 1200px;
   color: #1a1a1a;
   padding: 3rem 2rem;
